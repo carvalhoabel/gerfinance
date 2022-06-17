@@ -12,7 +12,7 @@ class AccBank(BankGeneral):
         """
         super().__init__()
         self._agency = self._number = self._id_acc = 0
-        self._type = ''
+        self._type_bank = ''
 
     @property
     def agency(self) -> int:
@@ -31,24 +31,25 @@ class AccBank(BankGeneral):
         self._number = number
 
     @property
-    def type(self) -> str:
-        return self._type
+    def type_bank(self) -> str:
+        return self._type_bank
 
-    @type.setter
-    def type(self, type: int):
+    @type_bank.setter
+    def type_bank(self, type_bank: int):
         """
         This method is special because it looks for the right
         account type available.
+
         - Payment -> 1
         - Checking -> 2
         - Saving -> 3
-        :param type: int. The key to choose.
+
+        :param type_bank: int. The key to choose.
         :return: None.
         """
-        if type < 1 or type > 3:
-            return None
-        bank = ('Payment', 'Checking', 'Saving')
-        self._type = bank[type]
+        if 0 < type_bank < 4:
+            bank = ('Payment', 'Checking', 'Saving')
+            self._type_bank = bank[type_bank-1]
 
     @property
     def id_acc(self) -> int:
