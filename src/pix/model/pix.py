@@ -1,4 +1,5 @@
 from decimal import Decimal
+from core.date.date import Date
 
 
 class Pix:
@@ -14,6 +15,7 @@ class Pix:
         self._description = ''
         self._id_pixkey = 0
         self._value = Decimal('0.00')
+        self._dateopp = Date()
 
     @property
     def send_pix(self) -> bool:
@@ -46,3 +48,11 @@ class Pix:
     @value.setter
     def value(self, value: Decimal):
         self._value = value
+
+    @property
+    def dateopp(self) -> Date:
+        return self._dateopp
+
+    @dateopp.setter
+    def dateopp(self, dateopp: Date):
+        self._dateopp = dateopp
